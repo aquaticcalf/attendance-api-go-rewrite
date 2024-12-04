@@ -5,7 +5,7 @@ this api provides endpoints for managing student attendance data. it allows fetc
 
 ### base url
 ```
-https://:5000
+http://localhost:5000
 ```
 
 ---
