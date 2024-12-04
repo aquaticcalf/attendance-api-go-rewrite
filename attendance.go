@@ -1,4 +1,4 @@
-package main
+package attendance
 
 import (
 	"bytes"
@@ -38,7 +38,7 @@ func encryptPassword(plaintext, key, iv string) (string, error) {
 	return base64.StdEncoding.EncodeToString(cipherText), nil
 }
 
-func fetchAttendance(studentID, password string) (string, error) {
+func FetchAttendance(studentID, password string) (string, error) {
 	loginURL := "https://webprosindia.com/vignanit/default.aspx"
 	attendanceURL := "https://webprosindia.com/vignanit/Academics/studentacadamicregister.aspx"
 
@@ -210,7 +210,7 @@ func main() {
 	studentID := "your_student_id"
 	password := "your_password"
 
-	jsonResult, err := fetchAttendance(studentID, password)
+	jsonResult, err := FetchAttendance(studentID, password)
 	if err != nil {
 		log.Fatalf("Error fetching attendance: %v", err)
 	}

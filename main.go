@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-	"test"
+	"attendance"
 )
 
 func getAttendance(w http.ResponseWriter, r *http.Request) {
@@ -19,7 +19,7 @@ func getAttendance(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	attendanceData, err := test.FetchAttendance(studentID, password)
+	attendanceData, err := attendance.FetchAttendance(studentID, password)
 	if err != nil {
 		http.Error(w, `{"error": "Failed to fetch attendance data"}`, http.StatusInternalServerError)
 		return
@@ -55,7 +55,7 @@ func compareAttendance(w http.ResponseWriter, r *http.Request) {
 			continue
 		}
 
-		attendanceData, err := test.FetchAttendance(studentID, password)
+		attendanceData, err := attendance.FetchAttendance(studentID, password)
 		if err != nil {
 			student["error"] = "Failed to fetch attendance data"
 			continue
@@ -156,7 +156,7 @@ func calculateAttendanceAfterSkip(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	attendanceData, err := test.FetchAttendance(studentID, password)
+	attendanceData, err := attendance.FetchAttendance(studentID, password)
 	if err != nil {
 		http.Error(w, `{"error": "Failed to fetch attendance data"}`, http.StatusInternalServerError)
 		return
