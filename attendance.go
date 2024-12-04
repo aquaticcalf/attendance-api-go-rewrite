@@ -1,16 +1,12 @@
-package attendance
+package main
 
 import (
 	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
-	"crypto/rand"
-	"crypto/sha256"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
-	"log"
 	"net/http"
 	"net/url"
 	"strings"
@@ -204,16 +200,4 @@ func FetchAttendance(studentID, password string) (string, error) {
 	}
 
 	return string(resultJSON), nil
-}
-
-func main() {
-	studentID := "your_student_id"
-	password := "your_password"
-
-	jsonResult, err := FetchAttendance(studentID, password)
-	if err != nil {
-		log.Fatalf("Error fetching attendance: %v", err)
-	}
-
-	fmt.Println(jsonResult)
 }
